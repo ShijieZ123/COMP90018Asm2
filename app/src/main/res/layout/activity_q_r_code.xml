@@ -4,25 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+    tools:context=".QRCodeActivity">
 
     <Button
+        android:id="@+id/GenerateBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/QRCodeBtn"
-        android:text="QR Code"
+        android:text="Generate QR Code"
         android:textAllCaps="false"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ScanBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scan QR Code"
+        android:textAllCaps="false"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GenerateBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
