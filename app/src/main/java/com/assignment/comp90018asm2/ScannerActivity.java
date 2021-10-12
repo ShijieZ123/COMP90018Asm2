@@ -25,6 +25,31 @@ public class ScannerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scanner);
         scanner = findViewById(R.id.codeScanner);
         tvScanner = findViewById(R.id.tvScanner);
+
+        if (!permissionGranted()) {
+            requestPermission();
+        }
+        scanner.setScannerViewEventListener(new ScannerLiveView.ScannerViewEventListener() {
+            @Override
+            public void onScannerStarted(ScannerLiveView scanner) {
+                Toast.makeText(ScannerActivity.this, "Scanner Started", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onScannerStopped(ScannerLiveView scanner) {
+                Toast.makeText(ScannerActivity.this, "Scanner Stopped", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onScannerError(Throwable err) {
+
+            }
+
+            @Override
+            public void onCodeScanned(String data) {
+                tvScanner.setText(data);
+            }
+        });
     }
 
     @Override
@@ -61,9 +86,9 @@ public class ScannerActivity extends AppCompatActivity {
         if (grantResults.length > 0) {
             boolean cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
             if (cameraAccepted) {
-                Toast.makeText(this, "Permission granted..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Permission Denined \n You cannot use app without providing permission", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
             }
         }
     }
